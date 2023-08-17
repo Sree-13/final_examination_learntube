@@ -1,0 +1,67 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="index.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Simple HTML Page</title>
+</head>
+
+<body>
+    <header class="page-header">
+        <h1>Welcome to LearnTube</h1>
+    </header>
+    <section class="content">
+        <p>LearnTube is a platform for online learning. It offers a wide range of educational videos and tutorials.</p>
+        <img src="learntube-image.jpg" alt="LearnTube" class="learntube-image">
+    </section>
+</body>
+
+</html>
+
+CSS
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.page-header {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content p {
+    margin-top: 0;
+    line-height: 1.5;
+}
+
+.learntube-image {
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
