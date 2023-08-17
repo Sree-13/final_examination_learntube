@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Site</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Our Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                ultricies euismod purus, vel feugiat odio sodales et.
+            </p>
+        </section>
+        <section>
+            <h2>Our Services</h2>
+            <ul>
+                <li>Web Design</li>
+                <li>Graphic Design</li>ice Design Example
+                <li>App Development</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #0a5477;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #ff0095;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+}
+
+p {
+    color: #555;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #e74c3c;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Additional Unique Styles */
+
+header {
+    border-bottom: 1px solid #555;
+}
+
+main {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+section {
+    border-left: 3px solid #f1c40f;
+    padding-left: 20px;
+}
+
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
