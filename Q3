@@ -6,4 +6,4 @@ def array_pair_sum(nums):
     return total_sum
 nums = [1, 4, 3, 2]
 maximized_sum = array_pair_sum(nums)
-print(maximized_sum)  # Output: 4
+print(maximized_sum)
