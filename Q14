@@ -1,0 +1,11 @@
+-- Question 1: What is the average salary of all employees?
+SELECT AVG(salary) AS average_salary FROM employees;
+
+-- Question 2: What is the total salary of all employees?
+SELECT SUM(salary) AS total_salary FROM employees;
+
+-- Question 3: What is the highest salary among male employees?
+SELECT MAX(salary) AS highest_salary_male FROM employees WHERE gender = 'male';
+
+-- Question 4: What is the lowest salary among female employees?
+SELECT MIN(salary) AS lowest_salary_female FROM employees WHERE gender = 'female';
