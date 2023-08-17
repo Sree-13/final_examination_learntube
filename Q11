@@ -1,0 +1,14 @@
+SELECT SUM(quality*price) AS total_revenue FROM online_Store;
+SELECT customer_id, COUNT(order_id) AS order_count
+FROM online_Store
+GROUP BY customer_id
+ORDER BY order_count DESC
+LIMIT 1;
+SELECT customer_id, AVG(quantity*price) AS average_order_value
+FROM online_Store
+GROUP BY customer_id;
+SELECT product_id, SUM(quantity) AS total_quantity_ordered
+FROM online_Store
+GROUP BY product_id
+ORDER BY total_quantity_ordered DESC
+LIMIT 1;
