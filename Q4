@@ -1,0 +1,58 @@
+#HTML
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Media Player</title>
+</head>
+<body>
+    <div class="media-player">
+        <button class="control-button blue">Play</button>
+        <button class="control-button green">Stop</button>
+    </div>
+</body>
+</html>
+
+CSS 
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.media-player {
+    text-align: center;
+}
+
+.control-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+}
+
+.green {
+    background-color: green;
+    color: white;
+}
+
+.control-button:hover {
+    background-color: #333;
+}
+
