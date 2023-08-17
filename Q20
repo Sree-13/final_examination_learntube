@@ -1,0 +1,94 @@
+// Function to display the Tic Tac Toe board
+function displayBoard(board) {
+  console.log("-------------");
+  for (let i = 0; i < 3; i++) {
+    console.log(`| ${board[i].join(" | ")} |`);
+    console.log("-------------");
+  }
+}
+
+// Function to check if a player has won
+function checkWin(board, player) {
+  for (let i = 0; i < 3; i++) {
+    // Check rows
+    if (
+      board[i][0] === player &&
+      board[i][1] === player &&
+      board[i][2] === player
+    ) {
+      return true;
+    }
+    // Check columns
+    if (
+      board[0][i] === player &&
+      board[1][i] === player &&
+      board[2][i] === player
+    ) {
+      return true;
+    }
+  }
+  // Check diagonals
+  if (
+    board[0][0] === player &&
+    board[1][1] === player &&
+    board[2][2] === player
+  ) {
+    return true;
+  }
+  if (
+    board[0][2] === player &&
+    board[1][1] === player &&
+    board[2][0] === player
+  ) {
+    return true;
+  }
+  return false;
+}
+
+// Function to check if the board is full (draw)
+function checkDraw(board) {
+  return board.every((row) => row.every((cell) => cell !== " "));
+}
+
+// Function to play the game
+function playTicTacToe() {
+  let currentPlayer = "X";
+  const board = [
+    [" ", " ", " "],
+    [" ", " ", " "],
+    [" ", " ", " "],
+  ];
+
+  console.log("Let's play Tic Tac Toe!");
+
+  while (true) {
+    console.log(`It's ${currentPlayer}'s turn.`);
+    displayBoard(board);
+
+    const row = prompt("Enter the row (0, 1, or 2):");
+    const col = prompt("Enter the column (0, 1, or 2):");
+
+    if (board[row][col] === " ") {
+      board[row][col] = currentPlayer;
+
+      if (checkWin(board, currentPlayer)) {
+        console.log(`${currentPlayer} wins!`);
+        displayBoard(board);
+        break;
+      }
+
+      if (checkDraw(board)) {
+        console.log("It's a draw!");
+        displayBoard(board);
+        break;
+      }
+
+      currentPlayer = currentPlayer === "X" ? "O" : "X";
+    } else {
+      console.log("Cell already taken. Try again.");
+    }
+  }
+}
+
+// Start the game
+playTicTacToe();
