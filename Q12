@@ -1,0 +1,38 @@
+const fs = require("fs");
+const csvParser = require("csv-parser");
+const_ = require("lodash");
+const books = [];
+fs.createReadStream("books.csv")
+  .pipe(csvParser())
+  .on("data",(row) => {
+    books.push(row);
+})
+.on("end",() => {
+  const genreCounts = _.countBy(books, "Genre");
+  const topGenres = _.chain(genCounts)
+    .toPairs()
+    .orderBy(["1"],["desc"])
+    .take(5)
+    .map (([genre]) => genre)
+    .value():
+  console.log("Top 5 most popular book genres:",topGenres);
+  const authorCount = _.countBy(books,"Author");
+  const mostBooksAuthor = _.chain(authorCounts)
+    .toPairs()
+    .orderBy(["1"],["desc"])
+    .head()
+    .map(([author]) => author)
+    .value();
+  console.log("Author with the most number of books:",mostBooksAuthor);
+  const averageRatingByAuthor = _.chain(books)
+    .groupBy("Author")
+    .map((books, author) => ({
+      author,
+      authorRating: _.meanBy(books,"Rating"),
+    }))
+      .value();
+  console.log("Average rating of books by each author:");
+  console.log(averageRatingByAuthor);
+  const highestRatedBook = _.maxBy(books,"Rating");
+  console.log("Book with the highest rating:",highestRatedBook);
+});
