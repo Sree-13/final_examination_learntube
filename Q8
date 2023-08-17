@@ -1,0 +1,67 @@
+//Retrieve the number of movies released in each year.
+db.movies.aggregate([
+  {
+    $group:{
+        _id: {$year:{$toDate: "$release_date"}},
+        count: {$sum:1}
+    }
+},
+{
+  $project: {
+    year:"$_id",
+    count: 1,
+    _id: 0
+    }
+  }
+]);
+//Retrieve the top 5 highest rated movies from the year 2000 onwards.
+db.movies.aggregate([
+  {
+    $match:{
+      release_date:{$gte: ISODate("200-01-01") },
+    },
+  },
+  {
+  $sort:{rating: -1},
+  },
+  {
+  $limit: 5,
+  },
+]);
+//Retrieve the title and average rating of the movies that have a rating of 4.5 or above.
+db.movies.aggregate([
+  {
+    $match:{
+      rating:{$gte:4.5},
+  },
+},
+{
+$project:{
+  title:1,
+  rating:1,
+  _id: 0,
+  },
+ },
+]);
+
+// Retrieve the number of movies in each genre.
+db.movies.aggregate([
+  {
+    $unwind:"$genres",
+  },
+{
+  $group:{
+    _id: "$genres",
+    count:{$sum:1},
+  },
+},
+{
+  $project:{
+    genre:"$_id",
+    count: 1,
+    _id: 0,
+    },
+  },
+]);
+
+
