@@ -6,62 +6,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Media Player</title>
 </head>
 <body>
     <div class="media-player">
-          <div class="media-player">
         <video id="videoPlayer" controls>
             <source src="" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <input type="file" id="videoInput" accept="video/mp4">
-        <button class="control-button blue">Play</button>
-        <button class="control-button green">Stop</button>
-        
-    <script src="script.js"></script>
+        <div class="controls">
+            <button id="playPauseBtn" class="play">Play</button>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+        </div>
     </div>
-</div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
 
 CSS 
 
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
 }
 
 .media-player {
-    text-align: center;
+    position: relative;
+    max-width: 640px;
+    background-color: #0008ff;
+    /* Red background color */
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.control-button {
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    cursor: pointer;
+video {
+    width: 100%;
     border-radius: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #212ebe;
+    /* Dark red button color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.blue {
-    background-color: blue;
-    color: white;
+button.play {
+    background-color: #2ecc71;
+    /* Green play button color */
 }
 
-.green {
-    background-color: green;
-    color: white;
+button.pause {
+    background-color: #293ec7;
+    /* Red pause button color */
 }
 
-.control-button:hover {
-    background-color: #333;
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 0 10px;
+    cursor: pointer;
 }
 
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 5px;
+    background: #2ecc71;
+    /* Green range track color */
+    border: none;
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #2ecc71;
+    /* Green range thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 5px;
+    background: #2ecc71;
+    /* Green range track color */
+    border: none;
+    border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #2ecc71;
+    /* Green range thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-ms-track {
+    height: 5px;
+    background: #2ecc71;
+    /* Green range track color */
+    border: none;
+    border-radius: 3px;
+}
+
+input[type="range"]::-ms-thumb {
+    width: 15px;
+    height: 15px;
+    background: #2ecc71;
+    /* Green range thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+JS
+
+const videoPlayer = document.getElementById("videoPlayer");
+const videoInput = document.getElementById("videoInput");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const volumeSlider = document.getElementById("volumeSlider");
+
+videoInput.addEventListener("change", handleVideoUpload);
+playPauseBtn.addEventListener("click", togglePlayPause);
+volumeSlider.addEventListener("input", setVolume);
+
+function handleVideoUpload() {
+  const file = videoInput.files[0];
+  if (file) {
+    const videoURL = URL.createObjectURL(file);
+    videoPlayer.src = videoURL;
+    videoPlayer.load();
+    videoPlayer.play();
+  }
+}
+
+function togglePlayPause() {
+  if (videoPlayer.paused || videoPlayer.ended) {
+    videoPlayer.play();
+    playPauseBtn.innerHTML = "Pause";
+    playPauseBtn.classList.remove("play");
+    playPauseBtn.classList.add("pause");
+  } else {
+    videoPlayer.pause();
+    playPauseBtn.innerHTML = "Play";
+    playPauseBtn.classList.remove("pause");
+    playPauseBtn.classList.add("play");
+  }
+}
+
+function setVolume() {
+  videoPlayer.volume = volumeSlider.value;
+}
