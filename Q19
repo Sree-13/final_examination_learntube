@@ -1,0 +1,49 @@
+#index1.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Weather</title>
+  </head>
+  <body>
+    <h1>Real-Time Weather</h1>
+    <label for="city">Enter city name:</label>
+    <input type="text" id="city" required />
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="weatherInfo"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+#script.js
+async function getWeather() {
+  const apiKey = "YOUR_API_KEY"; // Replace with your API key
+  const city = document.getElementById("city").value;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(
+        "City not found. Please check the city name and try again."
+      );
+    }
+    const data = await response.json();
+    displayWeather(data);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+function displayWeather(data) {
+  const weatherInfo = document.getElementById("weatherInfo");
+  weatherInfo.innerHTML = `
+        <h2>Weather in ${data.name}, ${data.sys.country}</h2>
+        <p>Temperature: ${data.main.temp} &deg;C</p>
+        <p>Weather: ${data.weather[0].main}</p>
+        <p>Description: ${data.weather[0].description}</p>
+        <p>Humidity: ${data.main.humidity}%</p>
+        <p>Wind Speed: ${data.wind.speed} m/s</p>
+    `;
+}
