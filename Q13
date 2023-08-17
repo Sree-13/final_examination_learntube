@@ -1,0 +1,26 @@
+const fs = require("fs");
+const csvParser = require("csv-parser");
+const _ = require("lodash");
+const employees =[];
+  .pipe(csvParser())
+  .on("data",(row) => {
+    employees.push(row);
+})
+.on("end",() => {
+  const totalSalary = _.sumBy(employees, "salary");
+  const averageSalary = totalSalary / employees.length;
+  const.log("Average salary of all employees:",averageSalary.toFIxed(2));
+  const.log("Total salary of all employees:",totalSalary.toFixed(2));
+  const maleEmployees = employees.filter(
+    (employee) => employee.gender ==="male"
+);
+const highestSalaryMale = _.maxBy(maleEmployees,"salary");
+console.log("Highest salary among male employees:",highestSalaryMale.salary);
+const femaleEmployees = employees.filter(
+  (employee) => employee.gender === "female"
+);
+const lowestSalary = _.minBy(femaleEmployees,"salary");
+console.log( 
+  "Lowest salary among female employees:",lowestSalaryFemale.salary);
+});
+
