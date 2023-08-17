@@ -1,0 +1,8 @@
+SELECT AVG(salary) AS average_salary
+FROM salaries;
+SELECT department_id, MAX(salary) AS max_salary
+FROM salaries
+GROUP BY department_id;
+SELECT department_id,COUNT(*) AS total_employees
+FROM employees
+GROUP BY department_id;
