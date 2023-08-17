@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+
+<body>
+    <h1>Countdown Timer</h1>
+    <div id="timer"></div>
+
+    <script>
+        // Set the target countdown date and time (Year, Month (0-11), Day, Hour, Minute, Second)
+        const targetDate = new Date(2023, 8, 31, 23, 59, 59);
+
+        function updateTimer() {
+            const currentDate = new Date();
+            const timeRemaining = targetDate - currentDate;
+
+            if (timeRemaining <= 0) {
+                document.getElementById('timer').textContent = 'Countdown expired!';
+                clearInterval(interval);
+                return;
+            }
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateTimer(); // Initial call to update the timer
+        const interval = setInterval(updateTimer, 1000); // Update timer every second
+    </script>
+</body>
+
+</html>
