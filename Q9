@@ -1,0 +1,17 @@
+import React from 'react';
+function YourDescription() {
+  return (
+    <div className="your-description">
+      <h2>About Me</h2>
+      <ul>
+        <li>I'm SRee Varshaa a passionate web developer.</li>
+        <li>My journey in coding began with Python, and I later ventured into full-stack web development.</li>
+        <li>Front-end technologies like React and CSS excite me, and I enjoy creating engaging user interfaces.</li>
+        <li>Problem-solving is my forte, and I'm always eager to learn new technologies and improve my skills.</li>
+        <li>In my free time, you'll find me exploring nature, reading, or working on personal coding projects.</li>
+      </ul>
+    </div>
+  );
+}
+
+export default YourDescription;
